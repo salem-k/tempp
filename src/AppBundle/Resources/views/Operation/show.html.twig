@@ -1,0 +1,62 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block body -%}
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">Operation {{ entity.libelle }}</div>
+    			<div class="panel-body">
+              <table class="table table-condensed">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ entity.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Produits :</th>
+                <td>
+                  <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Libelle</th>
+                            <th>Url</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for temp in entity.operationlignes %}
+                          <tr>
+                              <td>{{ temp.id }}</td>
+                              <td>{{ temp.libelle }}</td>
+                              <td>{{ temp.url }}</td>
+                          </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('operation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('operation_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

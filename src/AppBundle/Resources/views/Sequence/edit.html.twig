@@ -1,0 +1,21 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block body -%}
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget no-margin">
+        <div class="widget-header">
+          <div class="title">
+            <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Sequences
+          </div>
+        </div>
+        <div class="widget-body">
+          {{ form(edit_form,{'style':'horizontal'}) }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="{{ path('sequence') }}" class="btn btn-info pull-right">Back to the list</a>
+  {{ form(delete_form) }}
+
+
+{% endblock %}

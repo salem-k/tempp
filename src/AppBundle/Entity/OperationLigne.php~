@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OperationLigne
+ *
+ * @ORM\Table(name="operation_ligne", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_operation_ligne_operation_idx", columns={"operation_id"})})
+ * @ORM\Entity
+ */
+class OperationLigne
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=250, nullable=true)
+     */
+    private $libelle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=250, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var \Operation
+     *
+     * @ORM\ManyToOne(targetEntity="Operation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="operation_id", referencedColumnName="id")
+     * })
+     */
+    private $operation;
+
+
+}
+

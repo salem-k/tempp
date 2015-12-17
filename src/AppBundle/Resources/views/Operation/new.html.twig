@@ -1,0 +1,30 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block javascripts %}
+{#
+<script src="{{ asset('js/chart-data.js') }}"></script>
+<script src="{{ asset('js/easypiechart.js') }}"></script>
+<script src="{{ asset('js/easypiechart-data.js') }}"></script>
+#}
+
+{% endblock %}
+
+{% block body -%}
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Operation creation</div>
+      <div class="panel-body" >
+        {{ form(form,{ 'style': 'horizontal','role':'form'}) }}
+        <ul class="record_actions">
+          <li>
+              <a href="{{ path('operation') }}">Back to the list</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

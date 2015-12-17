@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Qrcode
+ *
+ * @ORM\Table(name="QRcode", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_QRcode_operation1_idx", columns={"operation_id"})})
+ * @ORM\Entity
+ */
+class Qrcode
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=250, nullable=true)
+     */
+    private $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="device_id", type="string", length=45, nullable=true)
+     */
+    private $deviceId;
+
+    /**
+     * @var \Operation
+     *
+     * @ORM\ManyToOne(targetEntity="Operation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="operation_id", referencedColumnName="id")
+     * })
+     */
+    private $operation;
+
+
+}
+
